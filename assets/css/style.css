@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #97b6c5;
+}
+.container{
+    max-width: 1440px;
+    min-height: 100vh;
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.logo{
+    max-height: 7vh;
+    object-fit: contain;
+    width: 100%;
+}
+input[type="checkbox"]{
+    display: none;
+}
+label[for="mood"]{
+    position: relative;
+    width: 78px;
+    padding: 11px 17px;
+    margin-top: 50px;
+    border-radius:50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+label[for="mood"]::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    background-color: #eaf3f7;
+    display: block;
+}
+.mood:checked + label:after , .mood:not(:checked) + label:after{
+    position: absolute;
+    content: '';
+    z-index: -1;
+    top: 8px;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #fff5b2;
+    display: block;
+    transition: left 300ms linear;
+}
+.mood:checked + label:after{
+    left: 55px;
+}
+.card{
+    position: relative;
+    width: 340px;
+    height: 510px;
+    perspective: 1000px;
+    margin-top: 70px;
+}
+.cardHolder{
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: transform 700ms 400ms ease-in-out;
+}
+.cardFront, .cardBack{
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 8px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: rgb(92 92 92 / 33%) 1px 0 34px 5px;
+}
+.cardBack{
+    background-image: url(../img/front_bg_img_test.jpg);
+}
+.cardFront{
+    background-image: url(../img/back_bg_img_test.jpg);
+}
+.cardFront div ,.cardBack div{
+    padding: 20px;
+    z-index: 1;
+}
+.cardHolder h2{
+    font-family: 'Lobster Two', cursive;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.7;
+    font-weight: 880;
+}
+.cardHolder p{
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 10px;
+}
+.cardHolder button{
+    font-size: 15px;
+    border: none;
+    display:block;
+    margin: auto;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cardHolder button img{
+    width: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.cardFront h2{
+    color: #d0d2db;
+}
+.cardFront p{
+    color: #dfdfdf
+}
+.cardFront button{
+    color: #22364f;
+    background-color: #f9f697;
+    box-shadow: rgb(255 237 117 / 74%) -2px 0px 29px
+}
+
+.cardBack h2{
+    color: #074585;
+}
+.cardBack p{
+    color: #135c87
+}
+.cardBack button{
+    color: #fff;
+    background-color: #66aacb;
+    box-shadow: rgb(55 91 129 / 74%) 0px 0px 35px;
+}
+
+.cardBack{
+    transform: rotateY(180deg);
+}
+.mood:checked ~ .card .cardHolder{
+    transform: rotateY(180deg);
+    transition: transform 700ms 400ms ease-in-out;
+}
+.profile-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 340px;
+    width: 100%;
+    border-radius: 25px;
+    padding: 0px;
+    border: 1px solid #ffffff40;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    
+  }
+
+  .profileContainer{
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #7b00e0, #ae31d9);
+  }
+  .profileContainer:hover{
+    height: 510px;
+    width: 340px;
+    border-radius: 8px;
+    box-shadow: 0px 1px 35px 0px rgba(0,0,0,0.3);
+  }
+  .profileContainer .wrapper img{
+    position: relative;
+    z-index: 20;
+    border-radius: 50%;
+    display: block;
+    height: 200px;
+    width: 200px;
+    border: 5px solid #fff;
+    object-fit: cover;
+    margin: auto;
+    transition: all 0.3s ease;
+  }
+  .profileContainer:hover .wrapper img.active{
+    height: 340px;
+    width: 510px;
+    margin: 0px auto;
+    border: none;
+    border-radius: 8px;
+  }
