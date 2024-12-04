@@ -3,7 +3,9 @@
 
 body{
     font-family: 'Open Sans', sans-serif;
-    background-color: #97b6c5;
+    /*background-color: #97b6c5;*/
+    /*background: linear-gradient(45deg, #010030, #1a4474, #fff5b2);*/
+    background: linear-gradient(45deg, #2ca1b1, #97b6c5)
 }
 .container{
     max-width: 1440px;
@@ -101,7 +103,7 @@ label[for="mood"]::before{
     box-shadow: rgb(92 92 92 / 33%) 1px 0 34px 5px;
 }
 .cardBack{
-    background-image: url(../img/front_bg_img_test.jpg);
+    background-image: url(../img/abc.jpg);
 }
 .cardFront{
     background-image: url(../img/back_bg_img_test.jpg);
@@ -152,15 +154,20 @@ label[for="mood"]::before{
 }
 
 .cardBack h2{
+    position: absolute;
+    bottom: 50px;
     color: #074585;
+    vertical-align: top;
+    text-align: center;
 }
 .cardBack p{
-    color: #135c87
+    color: #135c87;
+    vertical-align: top;
 }
 .cardBack button{
     color: #fff;
-    background-color: #66aacb;
-    box-shadow: rgb(55 91 129 / 74%) 0px 0px 35px;
+    background-color: #5692b6;
+    box-shadow: rgba(55, 145, 178, 0.74) 0px 0px 35px;
 }
 
 .cardBack{
@@ -170,38 +177,29 @@ label[for="mood"]::before{
     transform: rotateY(180deg);
     transition: transform 700ms 400ms ease-in-out;
 }
-.profile-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 340px;
-    width: 100%;
-    border-radius: 25px;
-    padding: 0px;
-    border: 1px solid #ffffff40;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-    
-  }
 
-  .profileContainer{
+.profileContainer{
     height: 250px;
     width: 250px;
+    align-items: center;
     overflow: hidden;
     margin: 0 auto;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
-    background: linear-gradient(45deg, #7b00e0, #ae31d9);
-  }
-  .profileContainer:hover{
-    height: 510px;
-    width: 340px;
+    background: linear-gradient(45deg, #5692b6, #84dee0);
+    transform: translate3d(0, 0, 25px) perspective(180px) scale(1);
+}
+.profileContainer:hover{
+    height: 365px;
+    width: 292px;
     border-radius: 8px;
     box-shadow: 0px 1px 35px 0px rgba(0,0,0,0.3);
-  }
-  .profileContainer .wrapper img{
+    position: absolute;
+    bottom: 100px;
+}
+.profileContainer .wrapper img{
     position: relative;
-    z-index: 20;
     border-radius: 50%;
     display: block;
     height: 200px;
@@ -210,11 +208,67 @@ label[for="mood"]::before{
     object-fit: cover;
     margin: auto;
     transition: all 0.3s ease;
-  }
-  .profileContainer:hover .wrapper img.active{
-    height: 340px;
-    width: 510px;
-    margin: 0px auto;
+}
+.profileContainer:hover .wrapper img.active{
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
     border: none;
     border-radius: 8px;
+    padding: 0px;
+}
+.profileContainer .icons{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    list-style: none;
   }
+  .profileContainer .icons li{
+    margin: 0 5px;
+    margin-top: 500px;
+    transition: all 0.5s ease;
+  }
+  .profileContainer .icons li a{
+    display: block;
+    height: 50px;
+    width: 50px;
+    color: #5696b6;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    opacity: 1;
+    background: #fff;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+.profileContainer:hover .icons li{
+    opacity: 1;
+    margin-top: 300px;
+}
+.profileContainer .icons.active{
+    display: none;
+}
+.profileContainer .icons li a:hover{
+    transform: scale(0.9);
+}
+.name{
+    font-family: 'Lobster Two', cursive;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.0;
+    font-weight: 880;
+    color:#fff;
+    opacity: 1;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+.profileContainer:hover .name{
+    opacity: 1;
+    margin-top: -25px;
+}
+.name{
+    margin-top: 300px;
+    transition: all 0.5s ease;
+}
