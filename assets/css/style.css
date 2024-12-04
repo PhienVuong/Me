@@ -106,7 +106,7 @@ label[for="mood"]::before{
     background-image: url(../img/abc.jpg);
 }
 .cardFront{
-    background-image: url(../img/UIT.heic);
+    background-image: url(../img/UIT.jpg);
 }
 .cardFront div ,.cardBack div{
     padding: 20px;
