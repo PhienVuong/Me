@@ -225,13 +225,13 @@ label[for="mood"]::before{
     transform: translate(-50%, -50%);
     z-index: 3;
     list-style: none;
-  }
-  .profileContainer .icons li{
+}
+.profileContainer .icons li{
     margin: 0 5px;
     margin-top: 500px;
     transition: all 0.5s ease;
-  }
-  .profileContainer .icons li a{
+}
+.profileContainer .icons li a{
     display: block;
     height: 50px;
     width: 50px;
@@ -243,7 +243,7 @@ label[for="mood"]::before{
     opacity: 1;
     background: #fff;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  }
+}
 .profileContainer:hover .icons li{
     opacity: 1;
     margin-top: 300px;
@@ -253,6 +253,12 @@ label[for="mood"]::before{
 }
 .profileContainer .icons li a:hover{
     transform: scale(0.9);
+}
+.profileContainer:hover .icons li:nth-child(2){
+    transition-delay: 0.2s;
+}
+.profileContainer:hover .icons li:nth-child(3){
+    transition-delay: 0.4s;
 }
 .name{
     font-family: 'Lobster Two', cursive;
