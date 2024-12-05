@@ -276,5 +276,5 @@ label[for="mood"]::before{
 }
 .name{
     margin-top: 300px;
-    transition: all 0.5s ease;
+    transition: all 1s ease;
 }
