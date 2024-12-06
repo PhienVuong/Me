@@ -9,7 +9,7 @@ body{
 }
 .container{
     max-width: 1440px;
-    min-height: 100vh;
+    min-height: 70vh;
     padding: 7px;
     margin: auto;
     display: flex;
