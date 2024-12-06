@@ -29,7 +29,7 @@ label[for="mood"]{
     position: relative;
     width: 78px;
     padding: 11px 17px;
-    margin-top: 50px;
+    margin-top: 30px;
     border-radius:50px;
     display: flex;
     justify-content: space-between;
@@ -69,7 +69,7 @@ label[for="mood"]::before{
     width: 340px;
     height: 510px;
     perspective: 1000px;
-    margin-top: 70px;
+    margin-top: 35px;
 }
 .cardHolder{
     width: 100%;
