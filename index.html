@@ -11,53 +11,52 @@
 </head>
 <body>
     <main class="container">
-        <div>
-            <img class="logo" alt="Logo" src="https://i.imgur.com/L2KiuHx.png">
-        </div>
+        <!--Trainee logo-->
+        <img id="logo" alt="Trainee Logo" src="./assets/img/Logo@4x.png">
+
+        <!--Flip card trigger-->
         <input type="checkbox" class="mood" id="mood" name="mood">
         <label for="mood">
-            <span><img src="assets/img/stars.png" alt="" height="30" width="30"></span> &nbsp;
-            <span><img src="assets/img/pets.png" alt="" height="35" width="35"></span>
+            <span id="star-ico"><img src="assets/img/stars.png" alt=""></span>
+            <span id="pets-ico"><img src="assets/img/pets.png" alt=""></span>
         </label>
 
-        <section class="card">
-            <article class="cardHolder">
+        <!--Card-->
+        <section class="card"> 
+            <div class="cardHolder">
+                <!--Content for Front card-->
                 <section class="cardFront">
-                    <div> 
+                    <div class="intro-wrapper"> 
                         <h2>me</h2>
-                        <p>from VNUHCM - UIT</p>
-                        <button>
-                            <img src="assets/img/whale-tail.png" alt="">
-                            Trainee
-                        </button>
+                        <p>from VNUHCM-UIT</p>
                     </div>
                 </section>
 
+                <!--Content for Back card-->
                 <section class="cardBack">
+                    <!--Content for profile goes here-->
                     <div class="profileContainer">
+                        <!--Avatar-->
                         <div class="wrapper">
                            <a href="#">
-                           <img src="assets/img/avt_card.jpeg" alt="">
+                                <img src="assets/img/avt_card.jpeg" alt="">
                            </a>
                         </div>
 
+                        <!--Contacts-->
                         <div class="icons">
                                 <li><a href="https://www.facebook.com/profile.php?id=61565743432277"><span class="fab fa-facebook-f"></span></a></li>
                                 <li><a href="https://github.com/PhienVuong/"><span class="fab fa-github"></span></a></li>
                                 <li><a href="https://www.instagram.com/fwnvyn/"><span class="fab fa-instagram"></span></a></li>
                         </div>
+
+                        <!--Name-->
                         <div class="name">
                             Phuong Vien
                         </div>
                     </div>
-                    <div></div>
-                    <div>
-                        <button>
-                            <img src="assets/img/white_whale_tale.png" alt="">
-                            Trainee
-                        </button>
-                    </div>
 
+                    <!--Script for contacts-->
                     <script>
                          const img = document.querySelector("img");
                          const icons = document.querySelector(".icons");
@@ -66,9 +65,13 @@
                            icons.classList.toggle("active");
                          }
                     </script>
-                </section>    
-                    
-            </article>
+                </section>  
+            </div>
+            <!--Trainee button-->
+            <button class="trainee-btn"> <!--Nên tận dụng nút này để tạo hiệu ứng hiện tên & contacts thay vì hover-->
+                <img src="assets/img/whale-tail.png" alt="whale-tail"> <!--Đừng bỏ trống alt nha, ko phải bug nhưng ko nên--> 
+                <span>Trainee</span>
+            </button>
         </section>
     </main>
 </body>

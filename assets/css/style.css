@@ -1,37 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%; /*  */
+}
 body{
     font-family: 'Open Sans', sans-serif;
     /*background-color: #97b6c5;*/
     /*background: linear-gradient(45deg, #010030, #1a4474, #fff5b2);*/
-    background: linear-gradient(135deg, #2ca1b1, #97b6c5)
+    background: linear-gradient(135deg, #2ca1b1, #97b6c5);
+    color: #1a1a1a;
 }
-.container{
-    max-width: 1440px;
-    min-height: 80vh;
-    padding: 7px;
+.container{ 
     margin: auto;
+    height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    flex-wrap: no-wrap; /*Không cho items bên trong wrap thành nhiều dòng (hàng) khi thay đổi kích thước*/
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
 }
-.logo{
-    max-height: 7vh;
-    object-fit: contain;
+#logo{
     width: 100%;
+    object-fit: contain;
+    height: 10vh;
 }
 input[type="checkbox"]{
     display: none;
 }
 label[for="mood"]{
+    background-color: #a0cbd0; /* Đổi sang màu nhạt hơn so với background */
     position: relative;
-    width: 78px;
-    padding: 11px 17px;
-    margin-top: 20px;
-    border-radius:50px;
+    height: 10vh;
+    aspect-ratio: 2.2/1; /* ép width phải theo tỉ lệ cố định với height */
+    padding: 10px 10px;
+    border-radius: 50px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
@@ -43,37 +55,50 @@ label[for="mood"]::before{
     top: 0;
     left: 0;
     z-index: -2;
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 8vh;
     background-color: #eaf3f7;
     display: block;
 }
+/* Style đối tượng trong CSS thay vì inline-css để dễ chỉnh sửa (ví dụ kích thước nhỏ đi tùy vào kích thước màn hình) */
+#star-ico, #pets-ico {
+    width: 50px;
+    height: 50px;
+}
+#star-ico img, #pets-ico img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 .mood:checked + label:after , .mood:not(:checked) + label:after{
-    position: absolute;
     content: '';
-    z-index: -1;
-    top: 8px;
-    left: 10px;
-    width: 45px;
-    height: 45px;
+    display: block;
+    height: 80%; /* Ưu tiên size dùng % so với parent để dễ thay đổi kích thước */
+    aspect-ratio: 2/1.9;
     border-radius: 50%;
     background-color: #fff5b2;
-    display: block;
-    transition: left 300ms linear;
+    position: absolute;
+    left: 10px; /* Bằng padding trái tới khung */
+    transition: left 300ms ease-in; 
 }
 .mood:checked + label:after{
-    left: 55px;
+    left: calc(100% - (10vh/2*1.9)); /* Slide tới vị trí = 100 chiều dài - width của label*/
 }
 .card{
     position: relative;
-    width: 340px;
-    height: 510px;
+    height: 75vh;
+    aspect-ratio: 3 / 4;
     perspective: 1000px;
-    margin-top: 35px;
+    overflow: hidden; /* chặn không cho profile khi hover bị tràn ra khỏi khung */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 .cardHolder{
     width: 100%;
-    height:100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -82,7 +107,6 @@ label[for="mood"]::before{
     transition: transform 700ms 400ms ease-in-out;
 }
 .cardFront, .cardBack{
-    align-items: center;
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -92,10 +116,12 @@ label[for="mood"]::before{
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    align-items: center;
     border-radius: 8px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
@@ -112,64 +138,31 @@ label[for="mood"]::before{
     padding: 20px;
     z-index: 1;
 }
-.cardHolder h2{
+/* Điều chỉnh khung chứa (intro-wrapper) thông tin trong p, h2 */
+.intro-wrapper {
+    margin-top: auto; /* set vị trí khung ở đáy card */
+    margin-bottom: 4rem; /* khoảng cách tương đối đến viền đáy card */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.intro-wrapper h2{
     font-family: 'Lobster Two', cursive;
     text-align: center;
-    font-size: 40px;
-    line-height: 1.7;
-    font-weight: 880;
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 0.8;
 }
-.cardHolder p{
+.intro-wrapper p{
     text-align: center;
-    font-size: 19px;
-    font-weight: 600;
-    line-height: 10px;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 0.8;
 }
-.cardHolder button{
-    font-size: 15px;
-    border: none;
-    display:block;
-    margin: auto;
-    padding: 15px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.cardHolder button img{
-    width: 25px;
-    vertical-align: middle;
-    margin-right: 10px;
-}
-
-.cardFront h2{
-    color: #d0d2db;
-}
-.cardFront p{
-    color: #dfdfdf
-}
-.cardFront button{
-    color: #22364f;
-    background-color: #f9f697;
-    box-shadow: rgb(255 237 117 / 74%) -2px 0px 29px
-}
-
-.cardBack h2{
-    position: absolute;
-    bottom: 50px;
-    color: #074585;
-    vertical-align: top;
-    text-align: center;
-}
-.cardBack p{
-    color: #135c87;
-    vertical-align: top;
-}
-.cardBack button{
-    color: #fff;
-    background-color: #5692b6;
-    box-shadow: rgba(55, 145, 178, 0.74) 0px 0px 35px;
-}
-
 .cardBack{
     transform: rotateY(180deg);
 }
@@ -177,13 +170,16 @@ label[for="mood"]::before{
     transform: rotateY(180deg);
     transition: transform 700ms 400ms ease-in-out;
 }
-
 .profileContainer{
-    height: 250px;
-    width: 250px;
+    position: relative;
+    margin: auto;
+    width: 330px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     overflow: hidden;
-    margin: 0 auto;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
@@ -191,27 +187,29 @@ label[for="mood"]::before{
     transform: translate3d(0, 0, 25px) perspective(180px) scale(1);
 }
 .profileContainer:hover{
-    height: 365px;
-    width: 292px;
+    margin: 0;
+    top: 0;
+    height: 80%;
+    justify-self: flex-start; /* replicate animation làm profile tràn full container */
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0px 1px 35px 0px rgba(0,0,0,0.3);
-    position: absolute;
     bottom: 100px;
 }
 .profileContainer .wrapper img{
     position: relative;
     border-radius: 50%;
     display: block;
-    height: 200px;
-    width: 200px;
+    height: 240px;
+    width: 240px;
     border: 5px solid #fff;
     object-fit: cover;
     margin: auto;
     transition: all 0.3s ease;
 }
 .profileContainer:hover .wrapper img.active{
-    height: 300px;
-    width: 300px;
+    height: 360px;
+    width: 360px;
     margin: 0 auto;
     border: none;
     border-radius: 8px;
@@ -246,7 +244,7 @@ label[for="mood"]::before{
 }
 .profileContainer:hover .icons li{
     opacity: 1;
-    margin-top: 300px;
+    margin-top: 350px;
 }
 .profileContainer .icons.active{
     display: none;
@@ -277,4 +275,58 @@ label[for="mood"]::before{
 .name{
     margin-top: 300px;
     transition: all 1s ease;
+}
+.trainee-btn{
+    margin-top: auto; /* set vị trí khung btn ở đáy card */
+    margin-bottom: 1rem; /* khoảng cách tương đối đến viền đáy card */
+    z-index: 3; /* cái button có z-index cao hơn card front & back để hiển thị trên cùng */
+    font-size: 1.25em;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    align-items: center;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    /* style tương ứng cho front card */
+    color: #22364f;
+    background-color: #f9f697;
+    box-shadow: rgb(255 237 117 / 74%) -2px 0px 29px;
+    /* Tùy chỉnh timing cho button thay đổi tương đối với card flip animation */
+    transition: 
+        background-color 1.2s ease-in-out, 
+        color 1.2s ease-in-out, 
+        box-shadow 0.8s ease-in-out;
+}
+.trainee-btn img{
+    width: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+/* khi click đổi mood làm card xoay thì btn thay đổi theo */
+.mood:checked ~ .card .trainee-btn{
+    color: #fff;
+    background-color: #66aacb;
+    box-shadow: rgb(55 91 129 / 74%) 0px 0px 35px;
+}
+
+/* Decrease height for smaller screens */
+@media screen and (max-width: 600px) {
+    #logo {
+        height: 7vh; 
+    }
+
+    label[for="mood"] {
+        height: 7vh; 
+    }
+
+    .mood:checked + label:after{
+        left: calc(100% - (7vh/2*1.9)); 
+    }
+
+    .card {
+        height: 55vh; 
+    }
 }
